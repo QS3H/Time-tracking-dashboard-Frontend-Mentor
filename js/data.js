@@ -1,4 +1,3 @@
-// This follows the structure provided in the Frontend Mentor challenge
 const timeData = [
   {
     title: "Work",
