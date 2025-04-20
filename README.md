@@ -51,8 +51,10 @@ In addition to the base requirements, this solution includes:
 
 ### Screenshot
 
-![Dashboard in light theme](./screenshots/light-theme.png)
 ![Dashboard in dark theme](./screenshots/dark-theme.png)
+
+![Dashboard in light theme](./screenshots/light-theme.png)
+
 ![Dashboard mobile view](./screenshots/mobile-view.png)
 
 ### Links
