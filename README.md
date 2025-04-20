@@ -57,8 +57,8 @@ In addition to the base requirements, this solution includes:
 
 ### Links
 
-- Solution URL: [Add your Frontend Mentor solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add your live site URL here](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor solution URL](https://www.frontendmentor.io/solutions/time-tracking-dashboard-solution-with-advanced-features-qHSrtJzCrG)
+- Live Site URL: [live site URL](https://qs3h.github.io/Time-tracking-dashboard-Frontend-Mentor/)
 
 ## My process
 
