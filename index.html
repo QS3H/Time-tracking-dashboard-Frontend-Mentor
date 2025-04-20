@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Theme metadata for browsers that support it -->
+    <meta name="theme-color" content="#0f1424" />
+    <meta name="color-scheme" content="dark light" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <title>Frontend Mentor | Time Tracking Dashboard</title>
+  </head>
+  <body>
+    <!-- Initial loading animation will be inserted by JavaScript -->
+    <main class="dashboard">
+      <div class="dashboard__profile">
+        <div class="profile__user">
+          <img
+            src="./images/image-jeremy.png"
+            alt="Jeremy Robson"
+            class="profile__avatar"
+          />
+          <div class="profile__info">
+            <p class="profile__report">Report for</p>
+            <h1 class="profile__name">Jeremy Robson</h1>
+          </div>
+        </div>
+        <div class="profile__timeframes">
+          <button class="timeframe" data-timeframe="daily">Daily</button>
+          <button class="timeframe" data-timeframe="weekly">Weekly</button>
+          <button class="timeframe" data-timeframe="monthly">Monthly</button>
+        </div>
+      </div>
+
+      <div class="dashboard__cards">
+        <!-- Cards will be generated dynamically with JavaScript -->
+      </div>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://github.com/QS3H" target="_blank">Shawky Ahmed</a>.
+    </footer>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/theme-toggle.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

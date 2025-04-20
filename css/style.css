@@ -1,0 +1,557 @@
+:root {
+  /* Primary Colors */
+  --blue: hsl(246, 80%, 60%);
+  --light-orange: hsl(15, 100%, 70%); /* work */
+  --soft-blue: hsl(195, 74%, 62%); /* play */
+  --light-red: hsl(348, 100%, 68%); /* study */
+  --lime-green: hsl(145, 58%, 55%); /* exercise */
+  --violet: hsl(264, 64%, 52%); /* social */
+  --soft-orange: hsl(43, 84%, 65%); /* self care */
+
+  /* Neutral Colors */
+  --very-dark-blue: hsl(226, 43%, 10%);
+  --dark-blue: hsl(235, 46%, 20%);
+  --desaturated-blue: hsl(235, 45%, 61%);
+  --pale-blue: hsl(236, 100%, 87%);
+
+  /* Animation Durations */
+  --fast-transition: 0.2s;
+  --medium-transition: 0.4s;
+  --slow-transition: 0.7s;
+
+  /* Animation Easing */
+  --bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  background-color: var(--very-dark-blue);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  perspective: 1000px; /* For 3D animations */
+  overflow-x: hidden; /* Prevent horizontal scrollbar during animations */
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 1110px;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  animation: fadeIn var(--slow-transition) var(--ease-out) forwards;
+}
+
+/* Profile Card */
+.dashboard__profile {
+  background-color: var(--dark-blue);
+  border-radius: 15px;
+  overflow: hidden;
+  transform-origin: center;
+  animation: scaleIn var(--medium-transition) var(--bounce) 0.2s forwards;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform var(--medium-transition) var(--bounce),
+    box-shadow var(--medium-transition) var(--smooth);
+}
+
+.dashboard__profile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.profile__user {
+  background-color: var(--blue);
+  padding: 2rem;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile__user::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(45deg);
+  transition: transform var(--slow-transition);
+}
+
+.profile__user:hover::after {
+  transform: rotate(45deg) translate(50%, -50%);
+}
+
+.profile__avatar {
+  width: 70px;
+  height: 70px;
+  border: 3px solid white;
+  border-radius: 50%;
+  transition: transform var(--medium-transition) var(--bounce);
+  animation: scaleIn var(--medium-transition) var(--bounce) 0.4s forwards;
+}
+
+.profile__avatar:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.profile__info {
+  animation: slideInFromLeft var(--medium-transition) var(--ease-out) 0.5s
+    forwards;
+}
+
+.profile__report {
+  color: var(--pale-blue);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile__name {
+  font-weight: 300;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: fadeIn var(--medium-transition) forwards 0.6s;
+}
+
+.profile__timeframes {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timeframe {
+  background: none;
+  border: none;
+  color: var(--desaturated-blue);
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color var(--fast-transition),
+    transform var(--fast-transition) var(--bounce);
+  position: relative;
+  opacity: 0;
+  animation: fadeIn var(--medium-transition) forwards;
+}
+
+.timeframe:nth-child(1) {
+  animation-delay: 0.7s;
+}
+.timeframe:nth-child(2) {
+  animation-delay: 0.8s;
+}
+.timeframe:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.timeframe:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+.timeframe.active {
+  color: white;
+  font-weight: 500;
+}
+
+.timeframe.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: scaleIn var(--fast-transition) forwards;
+}
+
+/* Activity Cards */
+.dashboard__cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform var(--medium-transition) var(--bounce),
+    box-shadow var(--medium-transition) var(--smooth);
+  opacity: 0;
+  animation: fadeIn var(--medium-transition) var(--ease-out) forwards;
+}
+
+/* Staggered animation for cards */
+.card:nth-child(1) {
+  animation-delay: 1s;
+}
+.card:nth-child(2) {
+  animation-delay: 1.1s;
+}
+.card:nth-child(3) {
+  animation-delay: 1.2s;
+}
+.card:nth-child(4) {
+  animation-delay: 1.3s;
+}
+.card:nth-child(5) {
+  animation-delay: 1.4s;
+}
+.card:nth-child(6) {
+  animation-delay: 1.5s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card__bg {
+  height: 55px;
+  background-repeat: no-repeat;
+  background-position: 90% -10px;
+  transition: background-position var(--medium-transition) var(--smooth);
+}
+
+/* Float animation for icons */
+.card:hover .card__bg {
+  background-position: 85% -5px;
+  animation: floatIcon 3s infinite var(--smooth);
+}
+
+.card--work .card__bg {
+  background-color: var(--light-orange);
+  background-image: url("../images/icon-work.svg");
+}
+
+.card--play .card__bg {
+  background-color: var(--soft-blue);
+  background-image: url("../images/icon-play.svg");
+}
+
+.card--study .card__bg {
+  background-color: var(--light-red);
+  background-image: url("../images/icon-study.svg");
+}
+
+.card--exercise .card__bg {
+  background-color: var(--lime-green);
+  background-image: url("../images/icon-exercise.svg");
+}
+
+.card--social .card__bg {
+  background-color: var(--violet);
+  background-image: url("../images/icon-social.svg");
+}
+
+.card--self-care .card__bg {
+  background-color: var(--soft-orange);
+  background-image: url("../images/icon-self-care.svg");
+}
+
+.card__content {
+  background-color: var(--dark-blue);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-top: -10px;
+  position: relative;
+  z-index: 1;
+  transition: background-color var(--medium-transition) var(--smooth),
+    transform var(--medium-transition) var(--bounce);
+}
+
+.card__content:hover {
+  background-color: hsl(236, 41%, 34%);
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card__title {
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: transform var(--fast-transition) var(--smooth);
+}
+
+.card:hover .card__title {
+  transform: translateX(5px);
+}
+
+.card__menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--fast-transition) var(--bounce);
+}
+
+.card__menu:hover {
+  transform: scale(1.2);
+}
+
+.card__menu img {
+  width: 21px;
+  transition: filter var(--fast-transition);
+}
+
+.card__menu:hover img {
+  filter: brightness(1.5);
+}
+
+.card__times {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__current {
+  font-size: 2rem;
+  font-weight: 300;
+  transition: transform var(--medium-transition) var(--bounce);
+}
+
+.card:hover .card__current {
+  transform: scale(1.05);
+}
+
+.card__previous {
+  color: var(--pale-blue);
+  font-size: 0.9rem;
+  transition: opacity var(--fast-transition);
+}
+
+.card:hover .card__previous {
+  opacity: 0.7;
+}
+
+.attribution {
+  margin-top: 2rem;
+  font-size: 11px;
+  text-align: center;
+  color: var(--pale-blue);
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) forwards 2s;
+}
+
+.attribution a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color var(--fast-transition), transform var(--fast-transition);
+  display: inline-block;
+}
+
+.attribution a:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Animation classes for timeframe switching */
+.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--fast-transition), transform var(--fast-transition);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--fast-transition), transform var(--fast-transition);
+}
+
+/* 3D flip animation for cards */
+.flip-card {
+  animation: flipAnimation var(--medium-transition) var(--bounce) forwards;
+}
+
+@keyframes flipAnimation {
+  0% {
+    transform: rotateY(0);
+  }
+  50% {
+    transform: rotateY(10deg);
+  }
+  100% {
+    transform: rotateY(0);
+  }
+}
+
+/* Card number counter animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counting-animation {
+  animation: countUp var(--medium-transition) var(--ease-out) forwards;
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+  .dashboard__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .dashboard__profile {
+    height: 100%;
+  }
+
+  .profile__user {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 2rem 4rem;
+  }
+
+  .profile__avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile__name {
+    font-size: 2.5rem;
+  }
+
+  .profile__timeframes {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .dashboard__cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Animation for preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--very-dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity var(--slow-transition), transform var(--slow-transition);
+}
+
+.preloader.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+.preloader__spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

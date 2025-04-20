@@ -1,0 +1,188 @@
+/* Light theme styles */
+body.light-theme {
+  background-color: hsl(0, 0%, 95%);
+  color: hsl(236, 100%, 15%);
+}
+
+body.light-theme .dashboard__profile {
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .profile__user {
+  background-color: var(--blue);
+}
+
+body.light-theme .profile__name,
+body.light-theme .profile__report {
+  color: white;
+}
+
+body.light-theme .timeframe {
+  color: hsl(236, 45%, 40%);
+}
+
+body.light-theme .timeframe:hover {
+  color: hsl(236, 100%, 15%);
+}
+
+body.light-theme .timeframe.active {
+  color: hsl(236, 100%, 15%);
+}
+
+body.light-theme .timeframe.active::after {
+  background-color: hsl(236, 100%, 15%);
+}
+
+body.light-theme .card__content {
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .card__content:hover {
+  background-color: hsl(0, 0%, 98%);
+}
+
+body.light-theme .card__title {
+  color: hsl(236, 100%, 15%);
+}
+
+body.light-theme .card__current {
+  color: hsl(236, 100%, 15%);
+}
+
+body.light-theme .card__previous {
+  color: hsl(236, 45%, 40%);
+}
+
+body.light-theme .attribution {
+  color: hsl(236, 45%, 40%);
+}
+
+body.light-theme .attribution a {
+  color: var(--blue);
+}
+
+body.light-theme .preloader {
+  background-color: hsl(0, 0%, 95%);
+}
+
+body.light-theme #theme-toggle {
+  background-color: white;
+  color: hsl(236, 100%, 15%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced light theme animations */
+body.light-theme .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .card__menu img {
+  filter: brightness(0.2);
+}
+
+body.light-theme .card__menu:hover img {
+  filter: brightness(0.5);
+}
+
+/* Light theme transitions */
+.dashboard__profile,
+.card__content,
+.timeframe,
+.card__title,
+.card__current,
+.card__previous,
+.attribution,
+.card__menu img {
+  transition: all var(--medium-transition) var(--smooth);
+}
+
+/* Light theme gradient accents */
+body.light-theme .dashboard__profile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, var(--blue), var(--violet));
+  border-radius: 5px 5px 0 0;
+  opacity: 0;
+  transition: opacity var(--medium-transition);
+}
+
+body.light-theme .dashboard__profile:hover::before {
+  opacity: 1;
+}
+
+body.light-theme .card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, var(--blue), var(--light-red));
+  border-radius: 0 0 15px 15px;
+  opacity: 0;
+  transition: opacity var(--medium-transition);
+  z-index: 2;
+}
+
+body.light-theme .card:hover::before {
+  opacity: 1;
+}
+
+/* Custom scrollbar for light theme */
+body.light-theme::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.light-theme::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 95%);
+}
+
+body.light-theme::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 5px;
+}
+
+body.light-theme::-webkit-scrollbar-thumb:hover {
+  background: var(--violet);
+}
+
+/* Light theme animations for cards */
+body.light-theme .card__bg {
+  opacity: 0.9;
+  transition: opacity var(--medium-transition);
+}
+
+body.light-theme .card:hover .card__bg {
+  opacity: 1;
+}
+
+/* Light mode toggle button styling */
+#theme-toggle {
+  transition: transform var(--fast-transition) var(--bounce),
+    background-color var(--medium-transition),
+    box-shadow var(--medium-transition);
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+/* Light theme focus states for accessibility */
+body.light-theme button:focus,
+body.light-theme a:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Theme transition effect */
+body {
+  transition: background-color var(--medium-transition),
+    color var(--medium-transition);
+}
